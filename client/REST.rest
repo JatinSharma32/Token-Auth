@@ -1,8 +1,9 @@
-GET http://127.0.0.1:6001/register HTTP/1.1
+POST  http://127.0.0.1:6001/login HTTP/1.1
 content-type: application/json
 
 {
- "name": "Aniket",
- "gender": "Male",
- "techStack": "LAMP"
+    "username": "Jatin",
+    "email": "jatinsharma@gmail.com",
+    "role": "for",
+    "password": "jatin"
 }
