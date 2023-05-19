@@ -1,9 +1,8 @@
-POST  http://127.0.0.1:6001/login HTTP/1.1
+DELETE http://127.0.0.1:6001/crud HTTP/1.1
 content-type: application/json
 
 {
-    "username": "Jatin",
-    "email": "jatinsharma@gmail.com",
-    "role": "for",
-    "password": "jatin"
+    "username": "Kavita",
+    "email": "jatkumsha32@gmail.com",
+    "password": "Kavita0410"
 }

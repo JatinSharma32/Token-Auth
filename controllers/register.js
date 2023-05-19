@@ -1,25 +1,24 @@
 const SampleDataModel = require("../models/schema");
-const express = require("express");
-const add = express.Router();
 const bcryptjs = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 require("dotenv").config();
 
-add.post("/", async (req, res) => {
+const register = async (req, res) => {
   const { username, password, email } = req.body;
   if (!(username && password && email)) {
     res.status(400).json({ msg: "All fields required", data: undefined });
   } else {
     try {
-      const userExists = await SampleDataModel.find({ email: email });
-      if (userExists.length > 0) {
-        res
-          .status(403)
-          .json({
-            msg: "User already exists please visit '/login'",
-            data: userExists,
-          });
+      const userExists = await SampleDataModel.find({ email }, null, {
+        limit: 1,
+      }).exec();
+      if (userExists.length) {
+        //check of for error
+        res.status(403).json({
+          msg: "User already exists please visit '/login'",
+          data: userExists,
+        });
       } else {
         const hashedPassword = await bcryptjs.hash(password, 10);
         const user = await SampleDataModel.create({
@@ -38,15 +37,17 @@ add.post("/", async (req, res) => {
           { expiresIn: "1h" }
         );
 
-        user.token = token;
         user.password = undefined;
-        res.status(200).json({ msg: "Data added successfully", data: user });
+        console.log(user);
+        res
+          .status(200)
+          .json({ msg: "Data added successfully", data: { token: token } });
       }
     } catch (error) {
       res.status(450).json({ msg: "An error occured", data: error });
       console.log("Error occured: ", error);
     }
   }
-});
+};
 
-module.exports = add;
+module.exports = register;

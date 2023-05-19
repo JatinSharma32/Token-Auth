@@ -1,10 +1,8 @@
 const SampleDataModel = require("../models/schema");
-const express = require("express");
-const update = express.Router();
 
 require("dotenv").config();
 
-update.get("/", async (req, res) => {
+const update = async (req, res) => {
   const obj = {};
   if (req.body.newName) {
     obj.name = req.body.newName;
@@ -25,6 +23,6 @@ update.get("/", async (req, res) => {
     res.status(500).json({ msg: "Data fetching error", data: error });
     console.log(error);
   }
-});
+};
 
 module.exports = update;
