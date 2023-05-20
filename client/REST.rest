@@ -1,8 +1,9 @@
-DELETE http://127.0.0.1:6001/crud HTTP/1.1
+PATCH  http://127.0.0.1:6001/crud HTTP/1.1
 content-type: application/json
 
 {
     "username": "Kavita",
     "email": "jatkumsha32@gmail.com",
-    "password": "Kavita0410"
+    "password": "Kavita",
+    "newEmail":"Kavita18@gmail.com"
 }

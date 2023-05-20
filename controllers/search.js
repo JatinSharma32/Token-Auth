@@ -4,9 +4,13 @@ require("dotenv").config();
 
 const search = async (req, res) => {
   try {
-    const data = await SampleDataModel.find({ email: req.body.email }, null, {
-      limit: 1,
-    }).exec();
+    const data = await SampleDataModel.find(
+      { email: req.body.searchEmail },
+      null,
+      {
+        limit: 1,
+      }
+    ).exec();
     console.log(data);
     const tempObj =
       data.length > 0
