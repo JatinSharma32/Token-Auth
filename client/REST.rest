@@ -1,8 +1,132 @@
-GET http://127.0.0.1:6001/register HTTP/1.1
-content-type: application/json
+# # REGISTER: Standard check
+# POST http://127.0.0.1:6001/register HTTP/1.1
+# content-type: application/json
 
-{
- "name": "Aniket",
- "gender": "Male",
- "techStack": "LAMP"
-}
+# {
+#     "username":"user1",
+#     "email":"user1@gmail.com",
+#     "password":"user1"
+# }
+
+# # REGISTER: All fields included check
+# POST http://127.0.0.1:6001/register HTTP/1.1
+# content-type: application/json
+
+# {
+#     "email":"user1@gmail.com",
+#     "password":"user1"
+# }
+
+# # LOGIN: Standard check
+# POST http://127.0.0.1:6001/login HTTP/1.1
+# content-type: application/json
+
+# {
+#     "username":"user1",
+#     "email":"user1@gmail.com",
+#     "password":"user1"
+# }
+
+# # LOGIN: All fields included check
+# POST http://127.0.0.1:6001/login HTTP/1.1
+# content-type: application/json
+
+# {
+#     "email":"user1@gmail.com",
+#     "password":"user1"
+# }
+
+# # LOGIN: Auth check
+# POST http://127.0.0.1:6001/login HTTP/1.1
+# content-type: application/json
+
+# {
+#     "username":"jatin",
+#     "email":"user1@gmail.com",
+#     "password":"user"
+# }
+
+# # SEARCH: Standard check
+# GET http://127.0.0.1:6001/crud HTTP/1.1
+# content-type: application/json
+
+# {
+#     "email":"user1@gmail.com",
+#     "password":"user1"
+# }
+
+# # SEARCH: All fields check
+# GET http://127.0.0.1:6001/crud HTTP/1.1
+# content-type: application/json
+
+# {
+#     "password":"user1"
+# }
+
+# # SEARCH: Auth check
+# GET http://127.0.0.1:6001/crud HTTP/1.1
+# content-type: application/json
+
+# {
+#     "email":"user1@gmail.com",
+#     "password":"user"
+# }
+
+# # UPDATE: Standard check
+# PATCH http://127.0.0.1:6001/crud HTTP/1.1
+# content-type: application/json
+
+# {
+#     "email":"user1@gmail.com",
+#     "password":"user1",
+#     "newName":"userNameChange",
+#     "newEmail":"user@gmail.com",
+#     "newRole":"Coder"
+# }
+
+# # UPDATE: All fields check
+# PATCH http://127.0.0.1:6001/crud HTTP/1.1
+# content-type: application/json
+
+# {
+    
+#     "password":"user1",
+#     "newName":"userNameChange",
+#     "newEmail":"user@gmail.com",
+#     "newRole":"Coder"
+# }
+
+# # UPDATE: Auth check
+# PATCH http://127.0.0.1:6001/crud HTTP/1.1
+# content-type: application/json
+
+# {
+#     "email":"user@gmail.com",
+#     "password":"user"
+# }
+
+# # DELETE: All fields check
+# DELETE http://127.0.0.1:6001/crud HTTP/1.1
+# content-type: application/json
+
+# {
+#     "password":"user1"
+# }
+
+# # DELETE: Auth check
+# DELETE http://127.0.0.1:6001/crud HTTP/1.1
+# content-type: application/json
+
+# {
+#     "email":"user@gmail.com",
+#     "password":"user1"
+# }
+
+# # DELETE: Standard check
+# DELETE http://127.0.0.1:6001/crud HTTP/1.1
+# content-type: application/json
+
+# {
+#     "email":"user@gmail.com",
+#     "password":"user1"
+# }

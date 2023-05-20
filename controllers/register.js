@@ -1,21 +1,49 @@
 const SampleDataModel = require("../models/schema");
-const express = require("express");
-const add = express.Router();
+const bcryptjs = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 require("dotenv").config();
-add.get("/", async (req, res) => {
-  try {
-    // const tempObj = sampleData[Math. floor(Math.random() * 4)];
-    const data = await SampleDataModel.create({
-      name: req.body.name,
-      techStack: req.body.techStack,
-      gender: req.body.gender,
-    });
-    res.status(200).json({ msg: "Data added successfully", data: data });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ msg: "Data addition failed", data: err });
-  }
-});
 
-module.exports = add;
+const register = async (req, res) => {
+  try {
+    const { username, password, email } = req.body;
+    const userExists = await SampleDataModel.find({ email }, null, {
+      limit: 1,
+    }).exec();
+    if (userExists.length) {
+      //check of for error
+      res.status(403).json({
+        msg: "User already exists please visit '/login'",
+        data: userExists,
+      });
+    } else {
+      const hashedPassword = await bcryptjs.hash(password, 10);
+      const user = await SampleDataModel.create({
+        username: username,
+        password: hashedPassword,
+        email: email,
+      });
+
+      const token = jwt.sign(
+        {
+          username: user.username,
+          email: user.email,
+          role: user.role,
+        },
+        process.env.TOKEN_SECRET_KEY,
+        { expiresIn: "1h" }
+      );
+
+      user.password = undefined;
+      console.log(user);
+      res
+        .status(200)
+        .json({ msg: "Data added successfully", data: { token: token } });
+    }
+  } catch (error) {
+    res.status(500).json({ msg: "Server Error [ROUTE-REGISTER]", data: error });
+    console.log(error);
+  }
+};
+
+module.exports = register;
