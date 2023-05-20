@@ -5,12 +5,13 @@ require("dotenv").config();
 
 const remove = async (req, res) => {
   try {
-    const dataValue = await SampleDataModel.find({ email: req.body.email });
+    const { email } = req.body;
+    const dataValue = await SampleDataModel.find({ email: email });
     if (!dataValue) {
       res.status(404).json({ msg: "Data not found", data: data });
     } else {
       const data = await SampleDataModel.deleteOne({
-        email: req.body.email,
+        email: email,
       }).exec();
       if (data.deletedCount) {
         res.status(200).json({ msg: "Data deleted successfully", data: data });
@@ -19,7 +20,8 @@ const remove = async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).json({ msg: "Data deletion failed", data: error });
+    res.status(500).json({ msg: "Server Error [ROUTE-REMOVE]", data: error });
+    console.log(error);
   }
 };
 

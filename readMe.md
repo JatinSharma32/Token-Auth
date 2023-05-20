@@ -7,7 +7,7 @@
 - 401 Incorrect Credentials
 - 403 User already exists
 - 404 User not found
-- 450 Unexpected Error
+- 500 Unexpected Error
 
 ---
 
@@ -39,3 +39,13 @@ _If you want to contribute_
 - New branch
 - Commit message `feat:<message>`
 - Push, Delete branch Locally, merge Remotly
+
+---
+
+## Testing
+
+- Post:
+  - `/register`
+  - `/login`
+- Get, Delete, Patch:
+  - `/crud`

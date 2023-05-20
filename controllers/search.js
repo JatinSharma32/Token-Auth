@@ -4,8 +4,9 @@ require("dotenv").config();
 
 const search = async (req, res) => {
   try {
+    const { email, searchEmail } = req.body;
     const data = await SampleDataModel.find(
-      { email: req.body.searchEmail },
+      { email: searchEmail || email },
       null,
       {
         limit: 1,
@@ -18,7 +19,8 @@ const search = async (req, res) => {
         : { msg: "Data not found", data: null, status: 404 };
     res.status(tempObj.status).json(tempObj);
   } catch (error) {
-    res.status(500).json({ msg: "Data fetch failed", data: error });
+    res.status(500).json({ msg: "Server Error [ROUTE-SEARCH]", data: error });
+    console.log(error);
   }
 };
 
