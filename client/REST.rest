@@ -1,11 +1,13 @@
+# Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlN1cGVydXNlciIsImVtYWlsIjoiU3VwZXJ1c2VyQGdtYWlsLmNvbSIsInJvbGUiOiJHdWVzdCIsImlhdCI6MTY4NDczODUyOCwiZXhwIjoxNjg0NzQyMTI4fQ.0YipASPbLnCeu929vSQQrdd_wHpWJv682AD4GUqaUIU
+
 # # REGISTER: Standard check
 # POST http://127.0.0.1:6001/register HTTP/1.1
 # content-type: application/json
 
 # {
-#     "username":"user1",
-#     "email":"user1@gmail.com",
-#     "password":"user1"
+#     "username":"Superuser",
+#     "email":"Superuser@gmail.com",
+#     "password":"Superuser"
 # }
 
 # # REGISTER: All fields included check
@@ -20,17 +22,18 @@
 # # LOGIN: Standard check
 # POST http://127.0.0.1:6001/login HTTP/1.1
 # content-type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXJAZ21haWwuY29tIiwicm9sZSI6Ikd1ZXN0IiwiaWF0IjoxNjg0NzM4MjM2LCJleHAiOjE2ODQ3NDE4MzZ9.mOFu5L6Ui_0-Hc2Qu0qhA1FX7a2Bw352pocKCpO0yq0
 
 # {
-#     "username":"user1",
-#     "email":"user1@gmail.com",
-#     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIxIiwiZW1haWwiOiJ1c2VyMUBnbWFpbC5jb20iLCJpYXQiOjE2ODQ3Mjg0NDcsImV4cCI6MTY4NDczMjA0N30.j7BbJKlsi1SLOli-6YEMMuYRsBL6JFY1lCi0A4Um6nM",
-#     "password": "hha"
+#     "username":"Superuser",
+#     "email":"sudoUser@gmail.com",
+#     "password": "Superuser"
 # }
 
 # # LOGIN: All fields included check
 # POST http://127.0.0.1:6001/login HTTP/1.1
 # content-type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXJAZ21haWwuY29tIiwiaWF0IjoxNjg0NzM4Mjc0LCJleHAiOjE2ODQ3NDE4NzR9.1UNrxnkjhdcYnNXvWeniqD-joQThqQq9f833E_5OPvg
 
 # {
 #     "email":"user1@gmail.com",
@@ -40,6 +43,7 @@
 # # LOGIN: Auth check
 # POST http://127.0.0.1:6001/login HTTP/1.1
 # content-type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXJAZ21haWwuY29tIiwiaWF0IjoxNjg0NzM4Mjc0LCJleHAiOjE2ODQ3NDE4NzR9.1UNrxnkjhdcYnNXvWeniqD-joQThqQq9f833E_5OPvg
 
 # {
 #     "username":"jatin",
@@ -50,6 +54,7 @@
 # # SEARCH: Standard check
 # GET http://127.0.0.1:6001/crud HTTP/1.1
 # content-type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlN1cGVydXNlciIsImVtYWlsIjoiU3VwZXJ1c2VyQGdtYWlsLmNvbSIsInJvbGUiOiJHdWVzdCIsImlhdCI6MTY4NDczODUyOCwiZXhwIjoxNjg0NzQyMTI4fQ.0YipASPbLnCeu929vSQQrdd_wHpWJv682AD4GUqaUIU
 
 # {
 #     "email":"user1@gmail.com",
@@ -59,6 +64,7 @@
 # # SEARCH: All fields check
 # GET http://127.0.0.1:6001/crud HTTP/1.1
 # content-type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlN1cGVydXNlciIsImVtYWlsIjoiU3VwZXJ1c2VyQGdtYWlsLmNvbSIsInJvbGUiOiJHdWVzdCIsImlhdCI6MTY4NDczODUyOCwiZXhwIjoxNjg0NzQyMTI4fQ.0YipASPbLnCeu929vSQQrdd_wHpWJv682AD4GUqaUIU
 
 # {
 #     "password":"user1"
@@ -76,18 +82,20 @@
 # # UPDATE: Standard check
 # PATCH http://127.0.0.1:6001/crud HTTP/1.1
 # content-type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlN1cGVydXNlciIsImVtYWlsIjoiU3VwZXJ1c2VyQGdtYWlsLmNvbSIsInJvbGUiOiJHdWVzdCIsImlhdCI6MTY4NDczODUyOCwiZXhwIjoxNjg0NzQyMTI4fQ.0YipASPbLnCeu929vSQQrdd_wHpWJv682AD4GUqaUIU
 
 # {
-#     "email":"user1@gmail.com",
-#     "password":"user1",
-#     "newName":"ka",
-#     "newEmail":"cto@chikitsa.com",
+#     "email":"Superuser@gmail.com",
+#     "password":"Superuser",
+#     "newName":"Superuser",
+#     "newEmail":"sudoUser@gmail.com",
 #     "newRole":"CTO"
 # }
 
 # # UPDATE: All fields check
 # PATCH http://127.0.0.1:6001/crud HTTP/1.1
 # content-type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlN1cGVydXNlciIsImVtYWlsIjoiU3VwZXJ1c2VyQGdtYWlsLmNvbSIsInJvbGUiOiJHdWVzdCIsImlhdCI6MTY4NDczODUyOCwiZXhwIjoxNjg0NzQyMTI4fQ.0YipASPbLnCeu929vSQQrdd_wHpWJv682AD4GUqaUIU
 
 # {
     
@@ -109,6 +117,7 @@
 # # DELETE: All fields check
 # DELETE http://127.0.0.1:6001/crud HTTP/1.1
 # content-type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlN1cGVydXNlciIsImVtYWlsIjoiU3VwZXJ1c2VyQGdtYWlsLmNvbSIsInJvbGUiOiJHdWVzdCIsImlhdCI6MTY4NDczODUyOCwiZXhwIjoxNjg0NzQyMTI4fQ.0YipASPbLnCeu929vSQQrdd_wHpWJv682AD4GUqaUIU
 
 # {
 #     "password":"user1"
@@ -123,11 +132,12 @@
 #     "password":"user1"
 # }
 
-# # DELETE: Standard check
-# DELETE http://127.0.0.1:6001/crud HTTP/1.1
-# content-type: application/json
+# DELETE: Standard check
+DELETE http://127.0.0.1:6001/crud HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlN1cGVydXNlciIsImVtYWlsIjoic3Vkb1VzZXJAZ21haWwuY29tIiwiaWF0IjoxNjg0NzM5MTk0LCJleHAiOjE2ODQ3NDI3OTR9.0ItIkXwi_rEcTI6cXFmV8LtBT7N0cEE5krdzBckk8qo
 
-# {
-#     "email":"cto@chikitsa.com",
-#     "password":"user1"
-# }
+{
+    "email":"sudoUser@gmail.com",
+    "password":"Superuser"
+}

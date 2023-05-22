@@ -6,8 +6,11 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const login = async (req, res) => {
+  console.log("flag");
   try {
+    console.log("flag1");
     const { username, email, role } = req.body;
+    console.log("flag2");
     const token = jwt.sign(
       {
         username: username,
@@ -17,11 +20,13 @@ const login = async (req, res) => {
       process.env.TOKEN_SECRET_KEY,
       { expiresIn: "1h" }
     );
+    console.log("flag3");
 
     res.status(200).json({
       msg: "Authentication Success, now you can access [/curd]",
-      data: { token: token },
+      data: { token: `Bearer ${token}` },
     });
+    console.log("flag4");
   } catch (error) {
     res.status(500).json({ msg: "Server Error [ROUTE-LOGIN]", data: error });
     console.log(error);

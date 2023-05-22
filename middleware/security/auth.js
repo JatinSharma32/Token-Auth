@@ -1,57 +1,29 @@
-const bcryptjs = require("bcrypt");
-const jwt = require("jsonwebtoken");
 const studentSchema = require("../../models/schema");
+const passport = require("passport");
+const JwtStrategy = require("passport-jwt").Strategy,
+  ExtractJwt = require("passport-jwt").ExtractJwt;
 require("dotenv").config();
 
-const auth = async (req, res, next) => {
-  try {
-    const token = req.body.token;
-    const userExists = await studentSchema
-      .find({ email: req.body.email }, null, {
-        limit: 1,
-      })
-      .exec();
-    if (token) {
-      const tokenVerification = jwt.verify(token, process.env.TOKEN_SECRET_KEY);
-      if (tokenVerification) {
-        next();
-      } else {
-        if (userExists.length > 0) {
-          const passwordCheck = await bcryptjs.compare(
-            req.body.password,
-            userExists[0].password
-          );
-          if (passwordCheck) {
-            next();
-          } else {
-            res
-              .status(401)
-              .json({ msg: "Authentication Failed", data: passwordCheck });
-          }
-        } else {
-          res.status(404).json({ msg: "User doesn't exists", data: 404 });
+var opts = {};
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+opts.secretOrKey = process.env.TOKEN_SECRET_KEY;
+passport.use(
+  new JwtStrategy(opts, function (jwt_payload, done) {
+    studentSchema
+      .findOne({ email: jwt_payload.email })
+      .then(function (user, err) {
+        if (err) {
+          console.log("auth1");
+          return done(err, false);
         }
-      }
-    } else {
-      if (userExists.length > 0) {
-        const passwordCheck = await bcryptjs.compare(
-          req.body.password,
-          userExists[0].password
-        );
-        if (passwordCheck) {
-          next();
+        if (user) {
+          console.log("auth2");
+          return done(null, user);
         } else {
-          res
-            .status(401)
-            .json({ msg: "Authentication Failed", data: passwordCheck });
+          console.log("auth3");
+          return done(null, false);
+          // or you could create a new account
         }
-      } else {
-        res.status(404).json({ msg: "User doesn't exists", data: 404 });
-      }
-    }
-  } catch (error) {
-    res.status(500).json({ msg: "Server Error [Auth]", data: error });
-  }
-};
-
-module.exports = auth;
+      });
+  })
+);

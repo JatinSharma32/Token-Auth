@@ -36,9 +36,10 @@ const register = async (req, res) => {
 
       user.password = undefined;
       console.log(user);
-      res
-        .status(200)
-        .json({ msg: "Data added successfully", data: { token: token } });
+      res.status(200).json({
+        msg: "Data added successfully",
+        data: { token: `Bearer ${token}` },
+      });
     }
   } catch (error) {
     res.status(500).json({ msg: "Server Error [ROUTE-REGISTER]", data: error });
