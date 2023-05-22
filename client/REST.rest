@@ -24,7 +24,8 @@
 # {
 #     "username":"user1",
 #     "email":"user1@gmail.com",
-#     "password":"user1"
+#     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIxIiwiZW1haWwiOiJ1c2VyMUBnbWFpbC5jb20iLCJpYXQiOjE2ODQ3Mjg0NDcsImV4cCI6MTY4NDczMjA0N30.j7BbJKlsi1SLOli-6YEMMuYRsBL6JFY1lCi0A4Um6nM",
+#     "password": "hha"
 # }
 
 # # LOGIN: All fields included check
@@ -79,9 +80,9 @@
 # {
 #     "email":"user1@gmail.com",
 #     "password":"user1",
-#     "newName":"userNameChange",
-#     "newEmail":"user@gmail.com",
-#     "newRole":"Coder"
+#     "newName":"ka",
+#     "newEmail":"cto@chikitsa.com",
+#     "newRole":"CTO"
 # }
 
 # # UPDATE: All fields check
@@ -127,6 +128,6 @@
 # content-type: application/json
 
 # {
-#     "email":"user@gmail.com",
+#     "email":"cto@chikitsa.com",
 #     "password":"user1"
 # }

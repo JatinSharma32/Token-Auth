@@ -44,6 +44,8 @@ _If you want to contribute_
 
 ## Testing
 
+**For tesing you can refer to `/client/REST.rest` open in VS code and uncomment the pre written testing routes and then click _Send request_**
+
 - Post:
   - `/register`
   - `/login`
